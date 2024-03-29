@@ -1,1 +1,7 @@
 
+# lingo
+
+1. Using LLM or traditional embedding model to embedding input words and given words.
+2. Using LLM with prompt engineering to find synonym
+3. After method 1, using method2 to enhance the quality
+4. For context known, input a sentences including maksed word to recommend synonyms, and extract candidates of masking.
