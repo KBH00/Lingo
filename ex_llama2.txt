@@ -1,0 +1,10 @@
+1. Magnetic Resonance Imaging (MRI)
+2. Nuclear Magnetic Resonance (NMR) Imaging
+3. Magnetic Resonance Tomography (MRT)
+4. Magnetic Resonance Scanning (MRS)
+5. Magnetic Resonance Imaging and Spectroscopy (MRIS)
+6. Magnetic Resonance Imaging and Tomography (MRIT)
+7. Magnetic Resonance Imaging and Spectroscopy (MRS)
+8. Magnetic Resonance Imaging and Tomography (MRT)
+9. Magnetic Resonance Imaging and Angiography (MRA)
+10. Magnetic Resonance Imaging and Computed Tomography (MRCCT)
