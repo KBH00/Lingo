@@ -1,33 +1,46 @@
-import re
-
 def load_abbreviations(file_path):
-    abbr_dict = {}
-    with open(file_path, 'r') as file:
+    """Load abbreviations from a given file into a dictionary."""
+    abbrev_dict = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
-            if line.strip():
-                parts = line.strip().split(', ')
-                abbr = parts[0].strip("('")  
-                full_form = parts[1].strip("')")  
-                abbr_dict[abbr.lower()] = full_form
-                abbr_dict[full_form.lower()] = abbr
-    return abbr_dict
+            line = line.strip()
+            if line.startswith('(') and line.endswith(')'):
+                line = line[1:-1]  
+                parts = line.split("', '")
+                if len(parts) == 2:
+                    key = parts[0].strip("('")
+                    value = parts[1].strip("')")
+                    # Handle series like etc.'
+                    if 'etc.' in key:
+                        base_key = key.split(', etc.')[0]
+                        base_value = value.split(', etc.')[0]
 
-def replace_terms(text, abbr_dict):
-    pattern = re.compile(r'(\b)(\w+)(\b)', re.IGNORECASE)
-    
-    def replace_match(match):
-        word = match.group(2)
-        if word.lower() in abbr_dict:
-            replacement = abbr_dict[word.lower()]
-            if word[0].isupper():
-                return match.group(1) + replacement.capitalize() + match.group(3)
-            return match.group(1) + replacement + match.group(3)
-        return match.group(0) 
-    
-    return pattern.sub(replace_match, text)
+                        key_series = base_key.split(', ')
+                        value_series = base_value.split(', ')
+                        for k, v in zip(key_series, value_series):
+                            abbrev_dict[k.strip()] = v.strip()
+                    else:
+                        abbrev_dict[key] = value
+    return abbrev_dict
 
-abbr_dict = load_abbreviations('abbreviation.txt')
-input_text = "Patient shows signs of A.Fib. and requires frequent monitoring of A.B.G levels before meals."
-output_text = replace_terms(input_text, abbr_dict)
+def replace_abbreviations(sentence, abbrev_dict):
+    """Replace abbreviations in a sentence with their full forms."""
+    import re
+    words = re.split('(\W+)', sentence)
+    replaced_words = []
+    for word in words:
+        stripped_word = word.strip('.,;:!?"')
+        if stripped_word in abbrev_dict:
+            # Ensure to match the full word only
+            full_word = abbrev_dict[stripped_word]
+            replaced_words.append(full_word)
+        else:
+            replaced_words.append(word)
+    return ''.join(replaced_words)
 
-print(output_text)
+# abbreviations = load_abbreviations('abbreviation.txt')
+# input_sentence = "The patient's C1 and C2 vertebrae are aligned, and BP, CT, CHF is stable."
+
+# output_sentence = replace_abbreviations(input_sentence, abbreviations)
+# print("Original:", input_sentence)
+# print("Processed:", output_sentence)
