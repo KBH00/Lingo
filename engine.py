@@ -110,8 +110,6 @@ class synonym_recommendation():
         return terms
 
 
-import argparse
-
 """
 request body:
 {
