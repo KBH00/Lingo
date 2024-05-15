@@ -1,5 +1,5 @@
 import argparse
-from inference import synonym_recommendation
+from engine import synonym_recommendation
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set Synonym recommendation', add_help=False)

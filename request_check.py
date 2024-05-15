@@ -4,11 +4,11 @@ from langchain_community.llms import LlamaCpp
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-from llama2_7b import llama2_7b
-from masking import BERT_masking
+from models.llama2_7b import llama2_7b
+from models.masking import BERT_masking
 from transformers import pipeline
 from transformers import AutoModel, AutoTokenizer
-from PubMedBERT import med_BERT_embedding
+from models.PubMedBERT import med_BERT_embedding
 import torch
 import numpy as np
 from scipy.spatial.distance import cosine
