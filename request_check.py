@@ -23,6 +23,7 @@ request body:
   sentence: bool
   cntxt_len: "integer"
   text: "string"
+  abbreviation: bool
 }
 
 response body:
