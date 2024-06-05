@@ -19,7 +19,7 @@ import logging
 request body:
 {
   model: "string"
-  targetWord: "string" or "integer"
+  targetWord: "integer"
   sentence: bool
   cntxt_len: "integer"
   text: "string"
