@@ -1,0 +1,12 @@
+#=======================================================================
+#                           Model services rule
+
+#                               Key : Value
+
+#  Key is name of model and .py you added, this name will be shown to user
+#  Value is class name including suggestion method from Key.py
+#=======================================================================
+
+model_services:
+  llama2_7b: llama2_7b
+  llama2_13b: llama2_13b
