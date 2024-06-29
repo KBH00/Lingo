@@ -4,7 +4,7 @@ from langchain_community.llms import LlamaCpp
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-class llama2_7b():
+class llama2_7b:
     
     def __init__(self) -> None:
         
